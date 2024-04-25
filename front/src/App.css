@@ -1,0 +1,65 @@
+:root{
+  --c-grey: rgba(221, 216, 216, 0.267);
+}
+
+*{
+  margin: 0;
+  
+}
+.bg-grey{
+  background-color: var(--c-grey);
+}
+
+
+/* a{
+  color: inherit !important;
+  text-decoration: none !important;
+  text-transform: capitalize;
+  font-weight: 600 !important;
+} */
+
+.min-100h{
+  min-height: 100vh !important;
+}
+
+.nav-link{
+  width: fit-content;
+  text-wrap: nowrap;
+  border-radius: 20px;
+  
+}
+.nav-link:hover{
+  background-color: rgba(2, 207, 197, 0.288);
+  color: black !important;
+}
+/* SideBar */
+.avatar{
+  width: 7rem;
+  aspect-ratio: 1;
+}
+.logo{
+  width: 75px !important;
+  aspect-ratio: 1;
+}
+/* alarm icon component */
+.alarm-icon {
+  position: relative;
+  display: inline-block;
+  width: auto;
+}
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgba(14, 14, 14, 0.774);
+  color: rgb(226, 209, 205) !important;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Dashboard */
+.name-avatar{
+  width: 2rem;
+  aspect-ratio: 1;
+}
+

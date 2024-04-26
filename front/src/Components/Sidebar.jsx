@@ -26,13 +26,12 @@ export default function Sidebar() {
               <hr className='border border-2 w-100'/>
             </Container>
             <Nav className="d-flex flex-lg-column flex-md-row justify-content-around align-items-lg-start ">
-                <Col lg={3}><Link to="/" className='text-center p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-solid fa-table-columns me-2"></i><span>dashboard</span></Link></Col>
-                <Col lg={3}><Link to="/appointments" className='text-center p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-regular fa-calendar-check me-2"></i><span>appointments</span></Link></Col>
-                <Col lg={3}><Link to="/patients" className='text-center p-3 my-2 nav-link fw-semibold text-capitalize w-100'> <i className="fa-solid fa-hospital-user me-2"></i><span>patients</span></Link></Col>
-                <Col lg={3}><Link to="/schedule" className='text-center p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-solid fa-clipboard-list me-2"></i><span>schedule</span></Link></Col>
+                <Link to="/" className='text-center text-lg-start p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-solid fa-table-columns me-2"></i><span>dashboard</span></Link>
+                <Link to="/appointments" className='text-center text-lg-start p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-regular fa-calendar-check me-2"></i><span>appointments</span></Link>
+                <Link to="/patients" className='text-center text-lg-start p-3 my-2 nav-link fw-semibold text-capitalize w-100'> <i className="fa-solid fa-hospital-user me-2"></i><span>patients</span></Link>
+                <Link to="/schedule" className='text-center text-lg-start p-3 my-2 nav-link fw-semibold text-capitalize w-100'><i className="fa-solid fa-clipboard-list me-2"></i><span>schedule</span></Link>
             </Nav>
             <hr className='border border-2 w-100 d-lg-none'/>
-
             </Navbar.Collapse>
 
         </Container>

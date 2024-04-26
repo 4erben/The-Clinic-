@@ -3,10 +3,10 @@ import { Col, Container, Row, Table, Tooltip } from 'react-bootstrap'
 import {LineChart , Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Legend, PieChart, Pie, Cell, AreaChart, Area} from "recharts";
 import nameAvatar from "../assets/name-avatar.png";
 import PieCustomLegend from '../Components/CustomLegends/PieCustomLegend';
-
+import {data1, data2,patientData,appointments,colors} from "../data/data.jsx";
 
 export default function DashboardPage() {
-  const data1 = [{
+/*   const data1 = [{
     name:"Jan",
     Consultation:21,
     Catracts:50,
@@ -72,7 +72,7 @@ export default function DashboardPage() {
       mobile: "1******0*",
       date:"24 March,2023",
       time:"12:00PM",
-      action:"upcoming"
+      action:"upcoming",
     },
     {
       no:2,
@@ -115,7 +115,7 @@ export default function DashboardPage() {
       action:"upcoming"
     }
   ]
-  const colors = ["#8884d8","#0084d8","#8800d8","#888400","#888422","#858400","#508400"];
+  const colors = ["#8884d8","#0084d8","#8800d8","#888400","#888422","#858400","#508400"]; */
   return (
     <Container fluid className='h-100 bg-grey fw-semibold '>
       <Container fluid className='px-3'>
@@ -255,7 +255,7 @@ export default function DashboardPage() {
           </Row>
           {appointments.map((app)=>{
             return(
-          <Row>
+          <Row key={app.no}>
             <Col className='col-2' >
               <div>{app.no}</div>
             </Col>

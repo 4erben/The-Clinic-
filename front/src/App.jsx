@@ -6,6 +6,7 @@ import Sidebar from './Components/Sidebar'
 import {Routes, Route} from "react-router-dom";
 import DashboardPage from './Pages/Dashboard';
 import Topbar from './Components/Topbar';
+import Appointments from './Pages/Appointments';
 
 
 
@@ -13,7 +14,7 @@ import Topbar from './Components/Topbar';
 function App() {
   return (
     <Container fluid >
-      <Row className='min-100h'>
+      <Row className=''>
       <Sidebar/>
       <Col lg={10} className='text-black d-flex flex-column p-0 h-100'>
         <Topbar/>
@@ -21,6 +22,10 @@ function App() {
         <Route  
         path='/'
         element={<DashboardPage/>}
+        />
+        <Route 
+          path='/appointments'
+          element={<Appointments/>}
         />
         </Routes>
       </Col>

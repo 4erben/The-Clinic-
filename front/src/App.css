@@ -18,8 +18,11 @@
   font-weight: 600 !important;
 } */
 
-.min-100h{
+/* .min-100h{
   min-height: 100vh !important;
+} */
+.w-fit{
+  width: fit-content !important;
 }
 
 .nav-link{

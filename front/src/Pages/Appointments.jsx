@@ -29,6 +29,7 @@ export default function Appointments() {
   return (
     <Container fluid className='bg-grey'>
         <Container fluid className='rounded mt-3 px-4 bg-white '>
+            {/* Row of Show Todays */}
             <Row className='py-3 mt-2'>
                 <div className='ms-auto d-flex justify-content-end'>
                 <span className='mx-2'>Show</span>
@@ -36,6 +37,7 @@ export default function Appointments() {
                 <span className='mx-2'>Appointments</span>
                 </div>
             </Row>
+            {/* Row Of Search input */}
             <Row className='rounded py-2 align-items-center px-2 bg-grey'>
                 <Col className='col-6'>
                 <input 
@@ -48,6 +50,7 @@ export default function Appointments() {
                 <Button className='rounded rounded-circle border border-primary' variant='info'><i className="fa-solid fa-plus"></i></Button>
                 </Col>
             </Row>
+            {/* Row of appointments */}
             <Row className='my-4 text-nowrap ' >
                 <Col xl={12} lg={12} className='col-3'>
                     <Row className='fw-semibold mb-4 flex-column flex-lg-row flex-xl-row'> 
@@ -72,7 +75,7 @@ export default function Appointments() {
                         {currentAppointments.map((app)=>{
                             return(
                             <Col lg={12} xl={12} md={3} className='col-6 ' key={Math.random()*app.no}>
-                            <Row className='fw-semibold mb-4 border-bottom flex-column flex-lg-row flex-xl-row '> 
+                            <Row className='fw-semibold mb-3 py-1 border-bottom rounded flex-column flex-lg-row flex-xl-row app-bar align-items-center'> 
                                 <Col className='col-3 d-lg-flex d-xl-flex'>
                                     <div className='mx-auto'>{app.no}.</div>
                                     <div className='mx-auto d-flex align-items-center'>

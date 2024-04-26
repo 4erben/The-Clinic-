@@ -65,4 +65,8 @@
   width: 2rem;
   aspect-ratio: 1;
 }
+.app-bar:hover{
+  background-color: rgba(226, 209, 205, 0.205);
+  cursor: pointer;
+}
 

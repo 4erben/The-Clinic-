@@ -1,124 +1,30 @@
-import React from 'react'
-import { Col, Container, Row, Table, Tooltip } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Col, Container, Row, Table, Tooltip,Button } from 'react-bootstrap'
 import {LineChart , Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Legend, PieChart, Pie, Cell, AreaChart, Area} from "recharts";
 import nameAvatar from "../assets/name-avatar.png";
 import PieCustomLegend from '../Components/CustomLegends/PieCustomLegend';
-import {data1, data2,patientData,appointments,colors} from "../data/data.jsx";
+import {data1, data2,patientData, ageWiseData,appointments,colors} from "../data/data.jsx";
 
 export default function DashboardPage() {
-/*   const data1 = [{
-    name:"Jan",
-    Consultation:21,
-    Catracts:50,
-    "LASIK Surgery": 41,
-    "Glaucoma": 30
-  },{
-    name:"Feb",
-    Consultation:25,
-    Catracts:60,
-    "LASIK Surgery": 51,
-    "Glaucoma": 34
-  },{
-    name:"March",
-    Consultation:31,
-    Catracts:65,
-    "LASIK Surgery": 31,
-    "Glaucoma": 53
-  },{
-    name:"April",
-    Consultation:35,
-    Catracts:70,
-    "LASIK Surgery": 41,
-    "Glaucoma": 45
-  },{
-    name:"May",
-    Consultation:41,
-    Catracts:80,
-    "LASIK Surgery": 45,
-    "Glaucoma": 25
-  }];
-  const data2 = [
-    { name: 'Category A', value: 400 },
-    { name: 'Category B', value: 300 },
-    { name: 'Category C', value: 200 },
-    { name: 'Category D', value: 100 },
-  ];
-  const patientData = [
-    { month: 'January', value: 100 },
-    { month: 'February', value: 150 },
-    { month: 'March', value: 200 },
-    { month: 'April', value: 180 },
-    { month: 'May', value: 220 },
-    { month: 'June', value: 250 },
-    { month: 'July', value: 280 },
-    { month: 'August', value: 300 },
-    { month: 'September', value: 270 },
-    { month: 'October', value: 220 },
-    { month: 'November', value: 180 },
-    { month: 'December', value: 150 },
-  ];
-  const ageWiseData =[
-    { name: 'A1', value: 100 },
-    { name: 'A2', value: 150 },
-    { name: 'B1', value: 100 },
-    { name: 'B2', value: 80 },
-    { name: 'B3', value: 40 },
-    { name: 'B4', value: 30 },
-  ];
-  const appointments = [
-    {
-      no:1,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming",
-    },
-    {
-      no:2,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming"
-    },
-    {
-      no:3,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming"
-    },
-    {
-      no:4,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming"
-    },
-    {
-      no:5,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming"
-    },
-    {
-      no:6,
-      name:"ABC",
-      mobile: "1******0*",
-      date:"24 March,2023",
-      time:"12:00PM",
-      action:"upcoming"
-    }
-  ]
-  const colors = ["#8884d8","#0084d8","#8800d8","#888400","#888422","#858400","#508400"]; */
+  const appointmentsPerPage = 10;
+  const [stateAppointment , setAppointments] = useState(appointments);
+  const [currentPage, setCurrentPage] = useState(1);
+  // Calculate the index of the first and last appointment to display on the current page
+  const indexOfLastAppointment = currentPage * appointmentsPerPage;
+  const indexOfFirstAppointment = indexOfLastAppointment - appointmentsPerPage;
+  const currentAppointments = stateAppointment.slice(indexOfFirstAppointment, indexOfLastAppointment);
+  
+
+
+  // Function to handle pagination
+  const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber);
+  };
+
   return (
     <Container fluid className='h-100 bg-grey fw-semibold '>
       <Container fluid className='px-3'>
+        {/* Row of Top numbers */}
       <Row className='p-2 my-2 '>
         <Col lg="4" >
           <div className='bg-info border border-primary rounded-3 m-1 d-flex flex-column'>
@@ -142,12 +48,13 @@ export default function DashboardPage() {
           </div>
         </Col>
       </Row>
+      {/* Row of Yearly Survey */}
       <Row className='p-5 my-3 bg-white rounded'>
         <Col lg="8" className='col-12 px-3  border-end'>
         <p >Yearly Survey</p>
         <ResponsiveContainer width="100%" height={250} >
         <LineChart data={data1}>
-        <Legend iconType='circle' verticalAlign="top" height={36}/>
+        <Legend iconType='circle' verticalAlign="top"  height={50}/>
         <XAxis dataKey="name" />
         <CartesianGrid vertical={false} />
         <YAxis />
@@ -174,6 +81,7 @@ export default function DashboardPage() {
         </ResponsiveContainer>
         </Col>
       </Row>
+      {/* Row of New Patient Added */}
       <Row className='p-5 my-3 bg-white rounded'>
       <p >New Patient Added</p>
           <ResponsiveContainer  width="100%" height={250}>
@@ -186,6 +94,7 @@ export default function DashboardPage() {
         </AreaChart>
           </ResponsiveContainer>
       </Row>
+      {/* Row of Patient Group */}
       <Row className='p-0 my-3  rounded'>
           <Col lg={6} className='ps-0 my-3'>
           <div className='p-2  me-auto bg-white rounded h-100'>
@@ -230,7 +139,77 @@ export default function DashboardPage() {
           </div>
           </Col>
       </Row>
-      <Row className='p-5 my-3 bg-white rounded w-100 justify-content-center d-none d-md-flex'>
+      {/* Row of Recent Appointments */}
+      <Row className='my-4 text-nowrap bg-white rounded py-3' >
+                <Col xl={12} lg={12} className='col-3'>
+                    <Row className='fw-semibold mb-4 flex-column flex-lg-row flex-xl-row'> 
+                        <Col className='col-3 d-lg-flex d-xl-flex'>
+                            <div className='mx-auto'>Sr no.</div>
+                            <div className='mx-auto'>Name</div>
+                        </Col>
+                        <Col className='col-3 d-lg-flex d-xl-flex'> 
+                            <div className='mx-auto'>Mobile</div>
+                        </Col>
+                        <Col className='col-6 d-lg-flex d-xl-flex'>
+                            <div className='mx-auto'>Date</div>
+                            <div className='mx-auto'>Time</div>
+                            <div className='mx-auto'>Status</div>
+                        </Col>
+                    </Row>
+                </Col>
+                {/* All Patients Column */}
+                <Col xl={12} lg={12} className='col-9 '>
+                    <Row className='flex-nowrap flex-lg-wrap overflow-x-auto overflow-y-auto'>
+                        {/* Single Patient Column */}
+                        {currentAppointments.map((app)=>{
+                            return(
+                            <Col lg={12} xl={12} md={3} className='col-6 ' key={Math.random()*app.no}>
+                            <Row className='fw-semibold mb-3 py-1 border-bottom rounded flex-column flex-lg-row flex-xl-row app-bar align-items-center'> 
+                                <Col className='col-3 d-lg-flex d-xl-flex'>
+                                    <div className='mx-auto'>{app.no}.</div>
+                                    <div className='mx-auto d-flex align-items-center'>
+                                        <img src={nameAvatar} className='name-avatar'/>
+                                        <span>{app.name}</span>
+                                    </div>
+                                </Col>
+                                <Col className='col-3 d-lg-flex d-xl-flex'> 
+                                        <div className='mx-auto'>{app.mobile}</div>
+                                </Col>
+                                <Col className='col-6 d-lg-flex d-xl-flex'>
+                                        <div className='mx-auto'>{app.date}</div>
+                                        <div className='mx-auto'>{app.time}</div>
+                                        <div className='mx-auto text-uppercase fw-bold'>{app.action}</div>
+                                </Col>
+                            </Row>
+                        </Col>
+                            )
+                        })
+                        
+                        }
+                    </Row>
+                    {/* Pagination buttons */}
+                    <Row className='my-4'>         
+                    <div className='d-flex justify-content-center align-items-center'>
+                        <Button 
+                        variant='info'
+                        onClick={() => paginate(currentPage - 1)} 
+                        disabled={currentPage === 1}
+                        >
+                            Previous
+                        </Button>
+                        <span className='fw-bold mx-4'>Page: {currentPage}</span>
+                        <Button
+                        variant='info' 
+                        onClick={() => paginate(currentPage + 1)} 
+                        disabled={indexOfLastAppointment >= appointments.length}
+                        >
+                            Next
+                        </Button>
+                    </div>
+                    </Row>
+                </Col>
+      </Row>
+      {/* <Row className='p-5 my-3 bg-white rounded w-100 justify-content-center d-none d-md-flex'>
           <p>Recent Appointments List</p>  
           <Col className='col-12'>
           <Row>
@@ -255,7 +234,7 @@ export default function DashboardPage() {
           </Row>
           {appointments.map((app)=>{
             return(
-          <Row key={app.no}>
+          <Row key={app.no} className='app-bar align-items-center text-nowrap py-2 rounded'>
             <Col className='col-2' >
               <div>{app.no}</div>
             </Col>
@@ -282,7 +261,7 @@ export default function DashboardPage() {
           })}
 
           </Col>
-      </Row>
+      </Row> */}
       </Container>
     </Container>
   )

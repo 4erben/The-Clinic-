@@ -237,7 +237,43 @@ const data1 = [{
       time:"12:00PM",
       action:"upcoming",
       email:"abc@gmail.com"
+    },
+    {
+      no:21,
+      name:"ABC",
+      mobile: "1******0*",
+      date:"24 March,2025",
+      time:"12:00PM",
+      action:"upcoming",
+      email:"abc@gmail.com"
+    },
+    {
+      no:22,
+      name:"ABC",
+      mobile: "1******0*",
+      date:"30 April,2024",
+      time:"12:00PM",
+      action:"upcoming",
+      email:"abc@gmail.com"
     }
   ];
   const colors = ["#8884d8","#0084d8","#8800d8","#888400","#888422","#858400","#508400"];
-  export {data1,data2,patientData,ageWiseData,appointments,colors};
+  const weekDays = [];
+   // Get today's date
+  const today = new Date();
+
+  // Get the day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+  const dayOfWeek = today.getDay();
+  const dayOfMonth = today.getDate();
+  // Calculate the date of the first day of the current week (Sunday)
+  const firstDayOfWeek = new Date(today);
+  firstDayOfWeek.setDate(today.getDate() - dayOfWeek);
+
+
+// Loop through the days of the week (0 to 6) and add each date to the array
+for (let i = 0; i < 7; i++) {
+  const day = new Date(firstDayOfWeek);
+  day.setDate(firstDayOfWeek.getDate() + i);
+  weekDays.push(day.toDateString());
+}
+  export {data1,data2,patientData,ageWiseData,appointments,colors,weekDays,today,dayOfMonth};

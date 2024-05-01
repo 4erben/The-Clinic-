@@ -69,4 +69,46 @@
   background-color: rgba(226, 209, 205, 0.205);
   cursor: pointer;
 }
+/* Appointments */
+.forum-overlay{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Make sure the forum appears on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+
+/* Schedule */
+.day-con:hover{
+  background-color: var(--bs-secondary);
+  cursor: pointer;
+  color: white !important;
+}
+.day-con::after{
+  content: "";
+  position: relative;
+  z-index: 1000;
+  bottom: -15px;
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: rgb(211, 7, 7);
+}
+
+.warning-circle::after{
+  content: "";
+  position: absolute;
+  
+  z-index: 1000;
+  top: 10px;
+  left: -40px;
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: rgb(27, 95, 107);
+}

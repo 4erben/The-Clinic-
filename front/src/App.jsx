@@ -7,6 +7,8 @@ import {Routes, Route} from "react-router-dom";
 import DashboardPage from './Pages/Dashboard';
 import Topbar from './Components/Topbar';
 import Appointments from './Pages/Appointments';
+import Patients from './Pages/Patients';
+import Schedule from './Pages/Schedule';
 
 
 
@@ -26,6 +28,14 @@ function App() {
         <Route 
           path='/appointments'
           element={<Appointments/>}
+        />
+        <Route 
+          path='/patients'
+          element={<Patients/>}
+        />
+        <Route 
+          path='/schedule'
+          element={<Schedule />}
         />
         </Routes>
       </Col>
